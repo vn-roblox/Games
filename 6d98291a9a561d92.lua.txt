@@ -1,0 +1,1212 @@
+-- ts file was generated at discord.gg/25ms
+
+local v1 = {
+    Tab_1 = loadstring(game:HttpGet('https://raw.githubusercontent.com/VanThanhIOS/OniiChanVanThanhIOS/refs/heads/main/main.txt'))():CreateWindow('V\u{103}n Th\u{e0}nh Hub '):addTab('Home'),
+}
+local _ChcNng = v1.Tab_1:addSection():addMenu('Ch\u{1ee9}c N\u{103}ng')
+
+getgenv().WalkSpeedValue = 26
+
+_ChcNng:addTextbox('Speed Hack', getgenv().WalkSpeedValue, function(p3)
+    getgenv().WalkSpeedValue = p3
+
+    if getgenv().WalkSpeedValue then
+        local _LocalPlayer = game:service('Players').LocalPlayer
+
+        _LocalPlayer.Character.Humanoid:GetPropertyChangedSignal('WalkSpeed'):Connect(function()
+            _LocalPlayer.Character.Humanoid.WalkSpeed = getgenv().WalkSpeedValue
+        end)
+
+        _LocalPlayer.Character.Humanoid.WalkSpeed = getgenv().WalkSpeedValue
+    end
+end)
+
+getgenv().JumpValue = 50
+
+_ChcNng:addTextbox('Nh\u{1ea3}y Cao', getgenv().JumpValue, function(p5)
+    getgenv().JumpValue = p5
+
+    if getgenv().JumpValue then
+        game:GetService('Players').LocalPlayer.Character.Humanoid.JumpPower = getgenv().JumpValue
+    end
+end)
+_ChcNng:addButton('Antilag + FPS', function()
+    local v6 = game
+    local _Workspace = v6.Workspace
+    local _Lighting = v6.Lighting
+    local _Terrain = _Workspace.Terrain
+
+    _Terrain.WaterWaveSize = 0
+    _Terrain.WaterWaveSpeed = 0
+    _Terrain.WaterReflectance = 0
+    _Terrain.WaterTransparency = 0
+    _Lighting.GlobalShadows = false
+    _Lighting.FogEnd = 9000000000
+    _Lighting.Brightness = 0
+    settings().Rendering.QualityLevel = 'Level01'
+
+    local v10, v11, v12 = pairs(v6:GetDescendants())
+    local v13 = false
+
+    while true do
+        local v14
+
+        v12, v14 = v10(v11, v12)
+
+        if v12 == nil then
+            break
+        end
+        if v14:IsA('Part') or (v14:IsA('Union') or (v14:IsA('CornerWedgePart') or v14:IsA('TrussPart'))) then
+            v14.Material = 'Plastic'
+            v14.Reflectance = 0
+        elseif v14:IsA('Decal') or v14:IsA('Texture') and v13 then
+            v14.Transparency = 1
+        elseif v14:IsA('ParticleEmitter') or v14:IsA('Trail') then
+            v14.Lifetime = NumberRange.new(0)
+        elseif v14:IsA('Explosion') then
+            v14.BlastPressure = 1
+            v14.BlastRadius = 1
+        elseif v14:IsA('Fire') or (v14:IsA('SpotLight') or (v14:IsA('Smoke') or v14:IsA('Sparkles'))) then
+            v14.Enabled = false
+        elseif v14:IsA('MeshPart') then
+            v14.Material = 'Plastic'
+            v14.Reflectance = 0
+            v14.TextureID = 1.0385902758728955e16
+        end
+    end
+
+    local v15, v16, v17 = pairs(_Lighting:GetChildren())
+
+    while true do
+        local v18
+
+        v17, v18 = v15(v16, v17)
+
+        if v17 == nil then
+            break
+        end
+        if v18:IsA('BlurEffect') or (v18:IsA('SunRaysEffect') or (v18:IsA('ColorCorrectionEffect') or (v18:IsA('BloomEffect') or v18:IsA('DepthOfFieldEffect')))) then
+            v18.Enabled = false
+        end
+    end
+end)
+_ChcNng:addButton('Esp Box Player', function()
+    local _Workspace2 = game:GetService('Workspace')
+    local _LocalPlayer2 = game:GetService('Players').LocalPlayer
+    local _CurrentCamera = _Workspace2.CurrentCamera
+    local u22 = true
+    local u23 = Color3.fromRGB(255, 0, 0)
+    local u24 = 1.4
+    local u25 = 1
+    local u26 = Color3.fromRGB(255, 255, 255)
+    local u27 = Color3.fromRGB(227, 52, 52)
+    local u28 = Color3.fromRGB(88, 217, 24)
+
+    local function u30()
+        local _Line = Drawing.new('Line')
+
+        _Line.Visible = false
+        _Line.From = Vector2.new(0, 0)
+        _Line.To = Vector2.new(1, 1)
+        _Line.Color = u23
+        _Line.Thickness = u24
+        _Line.Transparency = u25
+
+        return _Line
+    end
+
+    local v31, v32, v33 = pairs(game.Players:GetChildren())
+    local u34 = u24
+    local u35 = false
+    local u36 = false
+    local u37 = 1
+    local u38 = true
+    local u39 = 1.4
+
+    while true do
+        local u40
+
+        v33, u40 = v31(v32, v33)
+
+        if v33 == nil then
+            break
+        end
+
+        local u41 = {
+            line1 = u30(),
+            line2 = u30(),
+            line3 = u30(),
+            line4 = u30(),
+            line5 = u30(),
+            line6 = u30(),
+            line7 = u30(),
+            line8 = u30(),
+            line9 = u30(),
+            line10 = u30(),
+            line11 = u30(),
+            line12 = u30(),
+            Tracer = u30(),
+        }
+
+        u41.Tracer.Color = u26
+        u41.Tracer.Thickness = u39
+        u41.Tracer.Transparency = u37
+
+        local function v85()
+            local u42 = nil
+            local _ = game:GetService('RunService').RenderStepped:Connect(function()
+                if u22 and u40.Character ~= nil and (u40.Character:FindFirstChild('Humanoid') ~= nil and (u40.Character:FindFirstChild('HumanoidRootPart') ~= nil and (u40.Name ~= _LocalPlayer2.Name and u40.Character.Humanoid.Health > 0) and u40.Character:FindFirstChild('Head') ~= nil)) then
+                    local _, v43 = _CurrentCamera:WorldToViewportPoint(u40.Character.HumanoidRootPart.Position)
+
+                    if v43 then
+                        local v44 = u40.Character.Head.Size.Y / 2
+                        local v45 = Vector3.new(2, 3, 1.5) * (v44 * 2)
+                        local v46 = _CurrentCamera:WorldToViewportPoint((u40.Character.HumanoidRootPart.CFrame * CFrame.new(-v45.X, v45.Y, -v45.Z)).p)
+                        local v47 = _CurrentCamera:WorldToViewportPoint((u40.Character.HumanoidRootPart.CFrame * CFrame.new(-v45.X, v45.Y, v45.Z)).p)
+                        local v48 = _CurrentCamera:WorldToViewportPoint((u40.Character.HumanoidRootPart.CFrame * CFrame.new(v45.X, v45.Y, v45.Z)).p)
+                        local v49 = _CurrentCamera:WorldToViewportPoint((u40.Character.HumanoidRootPart.CFrame * CFrame.new(v45.X, v45.Y, -v45.Z)).p)
+                        local v50 = _CurrentCamera:WorldToViewportPoint((u40.Character.HumanoidRootPart.CFrame * CFrame.new(-v45.X, -v45.Y, -v45.Z)).p)
+                        local v51 = _CurrentCamera:WorldToViewportPoint((u40.Character.HumanoidRootPart.CFrame * CFrame.new(-v45.X, -v45.Y, v45.Z)).p)
+                        local v52 = _CurrentCamera:WorldToViewportPoint((u40.Character.HumanoidRootPart.CFrame * CFrame.new(v45.X, -v45.Y, v45.Z)).p)
+                        local v53 = _CurrentCamera:WorldToViewportPoint((u40.Character.HumanoidRootPart.CFrame * CFrame.new(v45.X, -v45.Y, -v45.Z)).p)
+
+                        u41.line1.From = Vector2.new(v46.X, v46.Y)
+                        u41.line1.To = Vector2.new(v47.X, v47.Y)
+                        u41.line2.From = Vector2.new(v47.X, v47.Y)
+                        u41.line2.To = Vector2.new(v48.X, v48.Y)
+                        u41.line3.From = Vector2.new(v48.X, v48.Y)
+                        u41.line3.To = Vector2.new(v49.X, v49.Y)
+                        u41.line4.From = Vector2.new(v49.X, v49.Y)
+                        u41.line4.To = Vector2.new(v46.X, v46.Y)
+                        u41.line5.From = Vector2.new(v50.X, v50.Y)
+                        u41.line5.To = Vector2.new(v51.X, v51.Y)
+                        u41.line6.From = Vector2.new(v51.X, v51.Y)
+                        u41.line6.To = Vector2.new(v52.X, v52.Y)
+                        u41.line7.From = Vector2.new(v52.X, v52.Y)
+                        u41.line7.To = Vector2.new(v53.X, v53.Y)
+                        u41.line8.From = Vector2.new(v53.X, v53.Y)
+                        u41.line8.To = Vector2.new(v50.X, v50.Y)
+                        u41.line9.From = Vector2.new(v50.X, v50.Y)
+                        u41.line9.To = Vector2.new(v46.X, v46.Y)
+                        u41.line10.From = Vector2.new(v51.X, v51.Y)
+                        u41.line10.To = Vector2.new(v47.X, v47.Y)
+                        u41.line11.From = Vector2.new(v52.X, v52.Y)
+                        u41.line11.To = Vector2.new(v48.X, v48.Y)
+                        u41.line12.From = Vector2.new(v53.X, v53.Y)
+                        u41.line12.To = Vector2.new(v49.X, v49.Y)
+
+                        if u38 then
+                            local v54 = _CurrentCamera:WorldToViewportPoint((u40.Character.HumanoidRootPart.CFrame * CFrame.new(0, -v45.Y, 0)).p)
+
+                            u41.Tracer.From = Vector2.new(_CurrentCamera.ViewportSize.X / 2, _CurrentCamera.ViewportSize.Y)
+                            u41.Tracer.To = Vector2.new(v54.X, v54.Y)
+                        end
+                        if u35 then
+                            if u40.TeamColor ~= _LocalPlayer2.TeamColor then
+                                local v55, v56, v57 = pairs(u41)
+
+                                while true do
+                                    local v58
+
+                                    v57, v58 = v55(v56, v57)
+
+                                    if v57 == nil then
+                                        break
+                                    end
+
+                                    v58.Color = u27
+                                end
+                            else
+                                local v59, v60, v61 = pairs(u41)
+
+                                while true do
+                                    local v62
+
+                                    v61, v62 = v59(v60, v61)
+
+                                    if v61 == nil then
+                                        break
+                                    end
+
+                                    v62.Color = u28
+                                end
+                            end
+                        end
+                        if u36 then
+                            local _magnitude = (_LocalPlayer2.Character.HumanoidRootPart.Position - u40.Character.HumanoidRootPart.Position).magnitude
+                            local v64 = math.clamp(1 / _magnitude * 100, 0.1, 4)
+                            local v65, v66, v67 = pairs(u41)
+
+                            while true do
+                                local v68
+
+                                v67, v68 = v65(v66, v67)
+
+                                if v67 == nil then
+                                    break
+                                end
+
+                                v68.Thickness = v64
+                            end
+                        else
+                            local v69, v70, v71 = pairs(u41)
+
+                            while true do
+                                local v72
+
+                                v71, v72 = v69(v70, v71)
+
+                                if v71 == nil then
+                                    break
+                                end
+
+                                v72.Thickness = u34
+                            end
+                        end
+
+                        local v73, v74, v75 = pairs(u41)
+
+                        while true do
+                            local v76
+
+                            v75, v76 = v73(v74, v75)
+
+                            if v75 == nil then
+                                break
+                            end
+                            if v76 ~= u41.Tracer then
+                                v76.Visible = true
+                            end
+                        end
+
+                        if u38 then
+                            u41.Tracer.Visible = true
+                        end
+                    else
+                        local v77, v78, v79 = pairs(u41)
+
+                        while true do
+                            local v80
+
+                            v79, v80 = v77(v78, v79)
+
+                            if v79 == nil then
+                                break
+                            end
+
+                            v80.Visible = false
+                        end
+                    end
+                else
+                    local v81, v82, v83 = pairs(u41)
+
+                    while true do
+                        local v84
+
+                        v83, v84 = v81(v82, v83)
+
+                        if v83 == nil then
+                            break
+                        end
+
+                        v84.Visible = false
+                    end
+
+                    if game.Players:FindFirstChild(u40.Name) == nil then
+                        u42:Disconnect()
+                    end
+                end
+            end)
+        end
+
+        coroutine.wrap(v85)()
+    end
+
+    game.Players.PlayerAdded:Connect(function(p86)
+        local u87 = {
+            line1 = u30(),
+            line2 = u30(),
+            line3 = u30(),
+            line4 = u30(),
+            line5 = u30(),
+            line6 = u30(),
+            line7 = u30(),
+            line8 = u30(),
+            line9 = u30(),
+            line10 = u30(),
+            line11 = u30(),
+            line12 = u30(),
+            Tracer = u30(),
+        }
+
+        u87.Tracer.Color = u26
+        u87.Tracer.Thickness = u39
+        u87.Tracer.Transparency = u37
+
+        local function v131()
+            local u88 = nil
+            local _ = game:GetService('RunService').RenderStepped:Connect(function()
+                if u22 and p86.Character ~= nil and (p86.Character:FindFirstChild('Humanoid') ~= nil and (p86.Character:FindFirstChild('HumanoidRootPart') ~= nil and (p86.Name ~= _LocalPlayer2.Name and p86.Character.Humanoid.Health > 0) and p86.Character:FindFirstChild('Head') ~= nil)) then
+                    local _, v89 = _CurrentCamera:WorldToViewportPoint(p86.Character.HumanoidRootPart.Position)
+
+                    if v89 then
+                        local v90 = p86.Character.Head.Size.Y / 2
+                        local v91 = Vector3.new(2, 3, 1.5) * (v90 * 2)
+                        local v92 = _CurrentCamera:WorldToViewportPoint((p86.Character.HumanoidRootPart.CFrame * CFrame.new(-v91.X, v91.Y, -v91.Z)).p)
+                        local v93 = _CurrentCamera:WorldToViewportPoint((p86.Character.HumanoidRootPart.CFrame * CFrame.new(-v91.X, v91.Y, v91.Z)).p)
+                        local v94 = _CurrentCamera:WorldToViewportPoint((p86.Character.HumanoidRootPart.CFrame * CFrame.new(v91.X, v91.Y, v91.Z)).p)
+                        local v95 = _CurrentCamera:WorldToViewportPoint((p86.Character.HumanoidRootPart.CFrame * CFrame.new(v91.X, v91.Y, -v91.Z)).p)
+                        local v96 = _CurrentCamera:WorldToViewportPoint((p86.Character.HumanoidRootPart.CFrame * CFrame.new(-v91.X, -v91.Y, -v91.Z)).p)
+                        local v97 = _CurrentCamera:WorldToViewportPoint((p86.Character.HumanoidRootPart.CFrame * CFrame.new(-v91.X, -v91.Y, v91.Z)).p)
+                        local v98 = _CurrentCamera:WorldToViewportPoint((p86.Character.HumanoidRootPart.CFrame * CFrame.new(v91.X, -v91.Y, v91.Z)).p)
+                        local v99 = _CurrentCamera:WorldToViewportPoint((p86.Character.HumanoidRootPart.CFrame * CFrame.new(v91.X, -v91.Y, -v91.Z)).p)
+
+                        u87.line1.From = Vector2.new(v92.X, v92.Y)
+                        u87.line1.To = Vector2.new(v93.X, v93.Y)
+                        u87.line2.From = Vector2.new(v93.X, v93.Y)
+                        u87.line2.To = Vector2.new(v94.X, v94.Y)
+                        u87.line3.From = Vector2.new(v94.X, v94.Y)
+                        u87.line3.To = Vector2.new(v95.X, v95.Y)
+                        u87.line4.From = Vector2.new(v95.X, v95.Y)
+                        u87.line4.To = Vector2.new(v92.X, v92.Y)
+                        u87.line5.From = Vector2.new(v96.X, v96.Y)
+                        u87.line5.To = Vector2.new(v97.X, v97.Y)
+                        u87.line6.From = Vector2.new(v97.X, v97.Y)
+                        u87.line6.To = Vector2.new(v98.X, v98.Y)
+                        u87.line7.From = Vector2.new(v98.X, v98.Y)
+                        u87.line7.To = Vector2.new(v99.X, v99.Y)
+                        u87.line8.From = Vector2.new(v99.X, v99.Y)
+                        u87.line8.To = Vector2.new(v96.X, v96.Y)
+                        u87.line9.From = Vector2.new(v96.X, v96.Y)
+                        u87.line9.To = Vector2.new(v92.X, v92.Y)
+                        u87.line10.From = Vector2.new(v97.X, v97.Y)
+                        u87.line10.To = Vector2.new(v93.X, v93.Y)
+                        u87.line11.From = Vector2.new(v98.X, v98.Y)
+                        u87.line11.To = Vector2.new(v94.X, v94.Y)
+                        u87.line12.From = Vector2.new(v99.X, v99.Y)
+                        u87.line12.To = Vector2.new(v95.X, v95.Y)
+
+                        if u38 then
+                            local v100 = _CurrentCamera:WorldToViewportPoint((p86.Character.HumanoidRootPart.CFrame * CFrame.new(0, -v91.Y, 0)).p)
+
+                            u87.Tracer.From = Vector2.new(_CurrentCamera.ViewportSize.X / 2, _CurrentCamera.ViewportSize.Y)
+                            u87.Tracer.To = Vector2.new(v100.X, v100.Y)
+                        end
+                        if u35 then
+                            if p86.TeamColor ~= _LocalPlayer2.TeamColor then
+                                local v101, v102, v103 = pairs(u87)
+
+                                while true do
+                                    local v104
+
+                                    v103, v104 = v101(v102, v103)
+
+                                    if v103 == nil then
+                                        break
+                                    end
+
+                                    v104.Color = u27
+                                end
+                            else
+                                local v105, v106, v107 = pairs(u87)
+
+                                while true do
+                                    local v108
+
+                                    v107, v108 = v105(v106, v107)
+
+                                    if v107 == nil then
+                                        break
+                                    end
+
+                                    v108.Color = u28
+                                end
+                            end
+                        end
+                        if u36 then
+                            local _magnitude2 = (_LocalPlayer2.Character.HumanoidRootPart.Position - p86.Character.HumanoidRootPart.Position).magnitude
+                            local v110 = math.clamp(1 / _magnitude2 * 100, 0.1, 4)
+                            local v111, v112, v113 = pairs(u87)
+
+                            while true do
+                                local v114
+
+                                v113, v114 = v111(v112, v113)
+
+                                if v113 == nil then
+                                    break
+                                end
+
+                                v114.Thickness = v110
+                            end
+                        else
+                            local v115, v116, v117 = pairs(u87)
+
+                            while true do
+                                local v118
+
+                                v117, v118 = v115(v116, v117)
+
+                                if v117 == nil then
+                                    break
+                                end
+
+                                v118.Thickness = u34
+                            end
+                        end
+
+                        local v119, v120, v121 = pairs(u87)
+
+                        while true do
+                            local v122
+
+                            v121, v122 = v119(v120, v121)
+
+                            if v121 == nil then
+                                break
+                            end
+                            if v122 ~= u87.Tracer then
+                                v122.Visible = true
+                            end
+                        end
+
+                        if u38 then
+                            u87.Tracer.Visible = true
+                        end
+                    else
+                        local v123, v124, v125 = pairs(u87)
+
+                        while true do
+                            local v126
+
+                            v125, v126 = v123(v124, v125)
+
+                            if v125 == nil then
+                                break
+                            end
+
+                            v126.Visible = false
+                        end
+                    end
+                else
+                    local v127, v128, v129 = pairs(u87)
+
+                    while true do
+                        local v130
+
+                        v129, v130 = v127(v128, v129)
+
+                        if v129 == nil then
+                            break
+                        end
+
+                        v130.Visible = false
+                    end
+
+                    if game.Players:FindFirstChild(p86.Name) == nil then
+                        u88:Disconnect()
+                    end
+                end
+            end)
+        end
+
+        coroutine.wrap(v131)()
+    end)
+end)
+_ChcNng:addButton('Esp Name Player', function()
+    local _CurrentCamera2 = workspace.CurrentCamera
+    local _Players = game:GetService('Players')
+    local _LocalPlayer3 = _Players.LocalPlayer
+    local _RunService = game:GetService('RunService')
+
+    local function u149(p136, p137)
+        local _Humanoid = p137:WaitForChild('Humanoid')
+        local _Head = p137:WaitForChild('Head')
+        local _Text = Drawing.new('Text')
+
+        _Text.Visible = false
+        _Text.Center = true
+        _Text.Outline = false
+        _Text.Font = 3
+        _Text.Size = 16.16
+        _Text.Color = Color3.new(0, 255, 255)
+
+        local u141 = nil
+        local u142 = nil
+        local u143 = nil
+
+        local function u144()
+            _Text.Visible = false
+
+            _Text:Remove()
+
+            if u141 then
+                u141:Disconnect()
+
+                u141 = nil
+            end
+            if u142 then
+                u142:Disconnect()
+
+                u142 = nil
+            end
+            if u143 then
+                u143:Disconnect()
+
+                u143 = nil
+            end
+        end
+
+        u142 = p137.AncestryChanged:Connect(function(_, p145)
+            if not p145 then
+                u144()
+            end
+        end)
+        u143 = _Humanoid.HealthChanged:Connect(function(p146)
+            if p146 <= 0 or _Humanoid:GetState() == Enum.HumanoidStateType.Dead then
+                u144()
+            end
+        end)
+        u141 = _RunService.RenderStepped:Connect(function()
+            local v147, v148 = _CurrentCamera2:WorldToViewportPoint(_Head.Position)
+
+            if v148 then
+                _Text.Position = Vector2.new(v147.X, v147.Y - 27)
+                _Text.Text = '[ ' .. p136.Name .. ' ]'
+                _Text.Visible = true
+            else
+                _Text.Visible = false
+            end
+        end)
+    end
+    local function v152(p150)
+        if p150.Character then
+            u149(p150, p150.Character)
+        end
+
+        p150.CharacterAdded:Connect(function(p151)
+            u149(p150, p151)
+        end)
+    end
+
+    local v153 = next
+    local v154, v155 = _Players:GetPlayers()
+
+    while true do
+        local v156
+
+        v155, v156 = v153(v154, v155)
+
+        if v155 == nil then
+            break
+        end
+        if v156 ~= _LocalPlayer3 then
+            v152(v156)
+        end
+    end
+
+    _Players.PlayerAdded:Connect(v152)
+end)
+_ChcNng:addButton('Fly Bay', function()
+    local _ScreenGui = Instance.new('ScreenGui')
+    local _Frame = Instance.new('Frame')
+    local _TextButton = Instance.new('TextButton')
+    local _TextButton2 = Instance.new('TextButton')
+    local _TextButton3 = Instance.new('TextButton')
+    local _TextLabel = Instance.new('TextLabel')
+    local _TextButton4 = Instance.new('TextButton')
+    local _TextLabel2 = Instance.new('TextLabel')
+    local _TextButton5 = Instance.new('TextButton')
+    local _TextButton6 = Instance.new('TextButton')
+    local _TextButton7 = Instance.new('TextButton')
+    local _TextButton8 = Instance.new('TextButton')
+
+    _ScreenGui.Name = 'main'
+    _ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild('PlayerGui')
+    _ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    _ScreenGui.ResetOnSpawn = false
+    _Frame.Parent = _ScreenGui
+    _Frame.BackgroundColor3 = Color3.fromRGB(163, 255, 137)
+    _Frame.BorderColor3 = Color3.fromRGB(103, 221, 213)
+    _Frame.Position = UDim2.new(0.100320168, 0, 0.379746825, 0)
+    _Frame.Size = UDim2.new(0, 190, 0, 57)
+    _TextButton.Name = 'up'
+    _TextButton.Parent = _Frame
+    _TextButton.BackgroundColor3 = Color3.fromRGB(79, 255, 152)
+    _TextButton.Size = UDim2.new(0, 44, 0, 28)
+    _TextButton.Font = Enum.Font.SourceSans
+    _TextButton.Text = 'UP'
+    _TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+    _TextButton.TextSize = 14
+    _TextButton2.Name = 'down'
+    _TextButton2.Parent = _Frame
+    _TextButton2.BackgroundColor3 = Color3.fromRGB(215, 255, 121)
+    _TextButton2.Position = UDim2.new(0, 0, 0.491228074, 0)
+    _TextButton2.Size = UDim2.new(0, 44, 0, 28)
+    _TextButton2.Font = Enum.Font.SourceSans
+    _TextButton2.Text = 'DOWN'
+    _TextButton2.TextColor3 = Color3.fromRGB(0, 0, 0)
+    _TextButton2.TextSize = 14
+    _TextButton3.Name = 'onof'
+    _TextButton3.Parent = _Frame
+    _TextButton3.BackgroundColor3 = Color3.fromRGB(255, 249, 74)
+    _TextButton3.Position = UDim2.new(0.702823281, 0, 0.491228074, 0)
+    _TextButton3.Size = UDim2.new(0, 56, 0, 28)
+    _TextButton3.Font = Enum.Font.SourceSans
+    _TextButton3.Text = 'fly'
+    _TextButton3.TextColor3 = Color3.fromRGB(0, 0, 0)
+    _TextButton3.TextSize = 14
+    _TextLabel.Parent = _Frame
+    _TextLabel.BackgroundColor3 = Color3.fromRGB(242, 60, 255)
+    _TextLabel.Position = UDim2.new(0.469327301, 0, 0, 0)
+    _TextLabel.Size = UDim2.new(0, 100, 0, 28)
+    _TextLabel.Font = Enum.Font.SourceSans
+    _TextLabel.Text = 'Luxucac'
+    _TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+    _TextLabel.TextScaled = true
+    _TextLabel.TextSize = 14
+    _TextLabel.TextWrapped = true
+    _TextButton4.Name = 'plus'
+    _TextButton4.Parent = _Frame
+    _TextButton4.BackgroundColor3 = Color3.fromRGB(133, 145, 255)
+    _TextButton4.Position = UDim2.new(0.231578946, 0, 0, 0)
+    _TextButton4.Size = UDim2.new(0, 45, 0, 28)
+    _TextButton4.Font = Enum.Font.SourceSans
+    _TextButton4.Text = '+'
+    _TextButton4.TextColor3 = Color3.fromRGB(0, 0, 0)
+    _TextButton4.TextScaled = true
+    _TextButton4.TextSize = 14
+    _TextButton4.TextWrapped = true
+    _TextLabel2.Name = 'speed'
+    _TextLabel2.Parent = _Frame
+    _TextLabel2.BackgroundColor3 = Color3.fromRGB(255, 85, 0)
+    _TextLabel2.Position = UDim2.new(0.468421042, 0, 0.491228074, 0)
+    _TextLabel2.Size = UDim2.new(0, 44, 0, 28)
+    _TextLabel2.Font = Enum.Font.SourceSans
+    _TextLabel2.Text = '1'
+    _TextLabel2.TextColor3 = Color3.fromRGB(0, 0, 0)
+    _TextLabel2.TextScaled = true
+    _TextLabel2.TextSize = 14
+    _TextLabel2.TextWrapped = true
+    _TextButton5.Name = 'mine'
+    _TextButton5.Parent = _Frame
+    _TextButton5.BackgroundColor3 = Color3.fromRGB(123, 255, 247)
+    _TextButton5.Position = UDim2.new(0.231578946, 0, 0.491228074, 0)
+    _TextButton5.Size = UDim2.new(0, 45, 0, 29)
+    _TextButton5.Font = Enum.Font.SourceSans
+    _TextButton5.Text = '-'
+    _TextButton5.TextColor3 = Color3.fromRGB(0, 0, 0)
+    _TextButton5.TextScaled = true
+    _TextButton5.TextSize = 14
+    _TextButton5.TextWrapped = true
+    _TextButton6.Name = 'Close'
+    _TextButton6.Parent = _ScreenGui.Frame
+    _TextButton6.BackgroundColor3 = Color3.fromRGB(225, 25, 0)
+    _TextButton6.Font = 'SourceSans'
+    _TextButton6.Size = UDim2.new(0, 45, 0, 28)
+    _TextButton6.Text = 'X'
+    _TextButton6.TextSize = 30
+    _TextButton6.Position = UDim2.new(0, 0, -1, 27)
+    _TextButton7.Name = 'minimize'
+    _TextButton7.Parent = _ScreenGui.Frame
+    _TextButton7.BackgroundColor3 = Color3.fromRGB(192, 150, 230)
+    _TextButton7.Font = 'SourceSans'
+    _TextButton7.Size = UDim2.new(0, 45, 0, 28)
+    _TextButton7.Text = '-'
+    _TextButton7.TextSize = 40
+    _TextButton7.Position = UDim2.new(0, 44, -1, 27)
+    _TextButton8.Name = 'minimize2'
+    _TextButton8.Parent = _ScreenGui.Frame
+    _TextButton8.BackgroundColor3 = Color3.fromRGB(192, 150, 230)
+    _TextButton8.Font = 'SourceSans'
+    _TextButton8.Size = UDim2.new(0, 45, 0, 28)
+    _TextButton8.Text = '+'
+    _TextButton8.TextSize = 40
+    _TextButton8.Position = UDim2.new(0, 44, -1, 57)
+    _TextButton8.Visible = false
+    speeds = 1
+
+    local _LocalPlayer4 = game:GetService('Players').LocalPlayer
+    local _Character = game.Players.LocalPlayer.Character
+
+    if _Character then
+        _Character:FindFirstChildWhichIsA('Humanoid')
+    end
+
+    nowe = false
+
+    game:GetService('StarterGui'):SetCore('SendNotification', {
+        Title = 'V\u{103}n Th\u{e0}nh IOS',
+        Text = 'By: V\u{103}n Th\u{e0}nh IOS',
+        Icon = 'rbxthumb://type=Asset&id=5107182114&w=150&h=150',
+    })
+
+    Duration = 5
+    _Frame.Active = true
+    _Frame.Draggable = true
+
+    _TextButton3.MouseButton1Down:connect(function()
+        if nowe ~= true then
+            nowe = true
+
+            for _ = 1, speeds do
+                spawn(function()
+                    local _Heartbeat = game:GetService('RunService').Heartbeat
+
+                    tpwalking = true
+
+                    local _Character2 = game.Players.LocalPlayer.Character
+                    local v173
+
+                    if _Character2 then
+                        v173 = _Character2:FindFirstChildWhichIsA('Humanoid')
+                    else
+                        v173 = _Character2
+                    end
+
+                    while tpwalking and (_Heartbeat:Wait() and (_Character2 and (v173 and v173.Parent))) do
+                        if v173.MoveDirection.Magnitude > 0 then
+                            _Character2:TranslateBy(v173.MoveDirection)
+                        end
+                    end
+                end)
+            end
+
+            game.Players.LocalPlayer.Character.Animate.Disabled = true
+
+            local _Character3 = game.Players.LocalPlayer.Character
+            local v175 = _Character3:FindFirstChildOfClass('Humanoid') or _Character3:FindFirstChildOfClass('AnimationController')
+            local v176 = next
+            local v177, v178 = v175:GetPlayingAnimationTracks()
+
+            while true do
+                local v179
+
+                v178, v179 = v176(v177, v178)
+
+                if v178 == nil then
+                    break
+                end
+
+                v179:AdjustSpeed(0)
+            end
+
+            _LocalPlayer4.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Climbing, false)
+            _LocalPlayer4.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown, false)
+            _LocalPlayer4.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Flying, false)
+            _LocalPlayer4.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Freefall, false)
+            _LocalPlayer4.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.GettingUp, false)
+            _LocalPlayer4.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Jumping, false)
+            _LocalPlayer4.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Landed, false)
+            _LocalPlayer4.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Physics, false)
+            _LocalPlayer4.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.PlatformStanding, false)
+            _LocalPlayer4.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Ragdoll, false)
+            _LocalPlayer4.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Running, false)
+            _LocalPlayer4.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.RunningNoPhysics, false)
+            _LocalPlayer4.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Seated, false)
+            _LocalPlayer4.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.StrafingNoPhysics, false)
+            _LocalPlayer4.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Swimming, false)
+            _LocalPlayer4.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Swimming)
+        else
+            nowe = false
+
+            _LocalPlayer4.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Climbing, true)
+            _LocalPlayer4.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown, true)
+            _LocalPlayer4.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Flying, true)
+            _LocalPlayer4.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Freefall, true)
+            _LocalPlayer4.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.GettingUp, true)
+            _LocalPlayer4.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Jumping, true)
+            _LocalPlayer4.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Landed, true)
+            _LocalPlayer4.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Physics, true)
+            _LocalPlayer4.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.PlatformStanding, true)
+            _LocalPlayer4.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Ragdoll, true)
+            _LocalPlayer4.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Running, true)
+            _LocalPlayer4.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.RunningNoPhysics, true)
+            _LocalPlayer4.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Seated, true)
+            _LocalPlayer4.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.StrafingNoPhysics, true)
+            _LocalPlayer4.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Swimming, true)
+            _LocalPlayer4.Character.Humanoid:ChangeState(Enum.HumanoidStateType.RunningNoPhysics)
+        end
+        if game:GetService('Players').LocalPlayer.Character:FindFirstChildOfClass('Humanoid').RigType ~= Enum.HumanoidRigType.R6 then
+            local _LocalPlayer5 = game.Players.LocalPlayer
+            local _UpperTorso = _LocalPlayer5.Character.UpperTorso
+            local v182 = {
+                f = 0,
+                b = 0,
+                l = 0,
+                r = 0,
+            }
+            local v183 = {
+                f = 0,
+                b = 0,
+                l = 0,
+                r = 0,
+            }
+            local v184 = 50
+            local v185 = 0
+            local _BodyGyro = Instance.new('BodyGyro', _UpperTorso)
+
+            _BodyGyro.P = 90000
+            _BodyGyro.maxTorque = Vector3.new(9000000000, 9000000000, 9000000000)
+            _BodyGyro.cframe = _UpperTorso.CFrame
+
+            local _BodyVelocity = Instance.new('BodyVelocity', _UpperTorso)
+
+            _BodyVelocity.velocity = Vector3.new(0, 0.1, 0)
+            _BodyVelocity.maxForce = Vector3.new(9000000000, 9000000000, 9000000000)
+
+            if nowe == true then
+                _LocalPlayer5.Character.Humanoid.PlatformStand = true
+            end
+
+            while nowe == true or game:GetService('Players').LocalPlayer.Character.Humanoid.Health == 0 do
+                wait()
+
+                if v182.l + v182.r ~= 0 or v182.f + v182.b ~= 0 then
+                    v185 = v185 + 0.5 + v185 / v184
+
+                    if v184 < v185 then
+                        v185 = v184
+                    end
+                elseif v182.l + v182.r == 0 and (v182.f + v182.b == 0 and v185 ~= 0) then
+                    local v188 = v185 - 1
+
+                    v185 = v188 < 0 and 0 or v188
+                end
+                if v182.l + v182.r ~= 0 or v182.f + v182.b ~= 0 then
+                    _BodyVelocity.velocity = (game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (v182.f + v182.b) + (game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(v182.l + v182.r, (v182.f + v182.b) * 0.2, 0).p - game.Workspace.CurrentCamera.CoordinateFrame.p)) * v185
+                    v183 = {
+                        f = v182.f,
+                        b = v182.b,
+                        l = v182.l,
+                        r = v182.r,
+                    }
+                elseif v182.l + v182.r ~= 0 or (v182.f + v182.b ~= 0 or v185 == 0) then
+                    _BodyVelocity.velocity = Vector3.new(0, 0, 0)
+                else
+                    _BodyVelocity.velocity = (game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (v183.f + v183.b) + (game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(v183.l + v183.r, (v183.f + v183.b) * 0.2, 0).p - game.Workspace.CurrentCamera.CoordinateFrame.p)) * v185
+                end
+
+                _BodyGyro.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((v182.f + v182.b) * 50 * v185 / v184), 0, 0)
+            end
+
+            _BodyGyro:Destroy()
+            _BodyVelocity:Destroy()
+
+            _LocalPlayer5.Character.Humanoid.PlatformStand = false
+            game.Players.LocalPlayer.Character.Animate.Disabled = false
+            tpwalking = false
+        else
+            local _LocalPlayer6 = game.Players.LocalPlayer
+            local _Torso = _LocalPlayer6.Character.Torso
+            local v191 = {
+                f = 0,
+                b = 0,
+                l = 0,
+                r = 0,
+            }
+            local v192 = {
+                f = 0,
+                b = 0,
+                l = 0,
+                r = 0,
+            }
+            local v193 = 50
+            local v194 = 0
+            local _BodyGyro2 = Instance.new('BodyGyro', _Torso)
+
+            _BodyGyro2.P = 90000
+            _BodyGyro2.maxTorque = Vector3.new(9000000000, 9000000000, 9000000000)
+            _BodyGyro2.cframe = _Torso.CFrame
+
+            local _BodyVelocity2 = Instance.new('BodyVelocity', _Torso)
+
+            _BodyVelocity2.velocity = Vector3.new(0, 0.1, 0)
+            _BodyVelocity2.maxForce = Vector3.new(9000000000, 9000000000, 9000000000)
+
+            if nowe == true then
+                _LocalPlayer6.Character.Humanoid.PlatformStand = true
+            end
+
+            while nowe == true or game:GetService('Players').LocalPlayer.Character.Humanoid.Health == 0 do
+                game:GetService('RunService').RenderStepped:Wait()
+
+                if v191.l + v191.r ~= 0 or v191.f + v191.b ~= 0 then
+                    v194 = v194 + 0.5 + v194 / v193
+
+                    if v193 < v194 then
+                        v194 = v193
+                    end
+                elseif v191.l + v191.r == 0 and (v191.f + v191.b == 0 and v194 ~= 0) then
+                    local v197 = v194 - 1
+
+                    v194 = v197 < 0 and 0 or v197
+                end
+                if v191.l + v191.r ~= 0 or v191.f + v191.b ~= 0 then
+                    _BodyVelocity2.velocity = (game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (v191.f + v191.b) + (game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(v191.l + v191.r, (v191.f + v191.b) * 0.2, 0).p - game.Workspace.CurrentCamera.CoordinateFrame.p)) * v194
+                    v192 = {
+                        f = v191.f,
+                        b = v191.b,
+                        l = v191.l,
+                        r = v191.r,
+                    }
+                elseif v191.l + v191.r ~= 0 or (v191.f + v191.b ~= 0 or v194 == 0) then
+                    _BodyVelocity2.velocity = Vector3.new(0, 0, 0)
+                else
+                    _BodyVelocity2.velocity = (game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (v192.f + v192.b) + (game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(v192.l + v192.r, (v192.f + v192.b) * 0.2, 0).p - game.Workspace.CurrentCamera.CoordinateFrame.p)) * v194
+                end
+
+                _BodyGyro2.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((v191.f + v191.b) * 50 * v194 / v193), 0, 0)
+            end
+
+            _BodyGyro2:Destroy()
+            _BodyVelocity2:Destroy()
+
+            _LocalPlayer6.Character.Humanoid.PlatformStand = false
+            game.Players.LocalPlayer.Character.Animate.Disabled = false
+            tpwalking = false
+        end
+    end)
+
+    local u198 = nil
+
+    _TextButton.MouseButton1Down:connect(function()
+        u198 = _TextButton.MouseEnter:connect(function()
+            while u198 do
+                wait()
+
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 1, 0)
+            end
+        end)
+    end)
+    _TextButton.MouseLeave:connect(function()
+        if u198 then
+            u198:Disconnect()
+
+            u198 = nil
+        end
+    end)
+
+    local u199 = nil
+
+    _TextButton2.MouseButton1Down:connect(function()
+        u199 = _TextButton2.MouseEnter:connect(function()
+            while u199 do
+                wait()
+
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, -1, 0)
+            end
+        end)
+    end)
+    _TextButton2.MouseLeave:connect(function()
+        if u199 then
+            u199:Disconnect()
+
+            u199 = nil
+        end
+    end)
+    game:GetService('Players').LocalPlayer.CharacterAdded:Connect(function(_)
+        wait(0.7)
+
+        game.Players.LocalPlayer.Character.Humanoid.PlatformStand = false
+        game.Players.LocalPlayer.Character.Animate.Disabled = false
+    end)
+    _TextButton4.MouseButton1Down:connect(function()
+        speeds = speeds + 1
+        _TextLabel2.Text = speeds
+
+        if nowe == true then
+            tpwalking = false
+
+            for _ = 1, speeds do
+                spawn(function()
+                    local _Heartbeat2 = game:GetService('RunService').Heartbeat
+
+                    tpwalking = true
+
+                    local _Character4 = game.Players.LocalPlayer.Character
+                    local v202
+
+                    if _Character4 then
+                        v202 = _Character4:FindFirstChildWhichIsA('Humanoid')
+                    else
+                        v202 = _Character4
+                    end
+
+                    while tpwalking and (_Heartbeat2:Wait() and (_Character4 and (v202 and v202.Parent))) do
+                        if v202.MoveDirection.Magnitude > 0 then
+                            _Character4:TranslateBy(v202.MoveDirection)
+                        end
+                    end
+                end)
+            end
+        end
+    end)
+    _TextButton5.MouseButton1Down:connect(function()
+        if speeds ~= 1 then
+            speeds = speeds - 1
+            _TextLabel2.Text = speeds
+
+            if nowe == true then
+                tpwalking = false
+
+                for _ = 1, speeds do
+                    spawn(function()
+                        local _Heartbeat3 = game:GetService('RunService').Heartbeat
+
+                        tpwalking = true
+
+                        local _Character5 = game.Players.LocalPlayer.Character
+                        local v205
+
+                        if _Character5 then
+                            v205 = _Character5:FindFirstChildWhichIsA('Humanoid')
+                        else
+                            v205 = _Character5
+                        end
+
+                        while tpwalking and (_Heartbeat3:Wait() and (_Character5 and (v205 and v205.Parent))) do
+                            if v205.MoveDirection.Magnitude > 0 then
+                                _Character5:TranslateBy(v205.MoveDirection)
+                            end
+                        end
+                    end)
+                end
+            end
+        else
+            _TextLabel2.Text = 'cannot be less than 1'
+
+            wait(1)
+
+            _TextLabel2.Text = speeds
+        end
+    end)
+    _TextButton6.MouseButton1Click:Connect(function()
+        _ScreenGui:Destroy()
+    end)
+    _TextButton7.MouseButton1Click:Connect(function()
+        _TextButton.Visible = false
+        _TextButton2.Visible = false
+        _TextButton3.Visible = false
+        _TextButton4.Visible = false
+        _TextLabel2.Visible = false
+        _TextButton5.Visible = false
+        _TextButton7.Visible = false
+        _TextButton8.Visible = true
+        _ScreenGui.Frame.BackgroundTransparency = 1
+        _TextButton6.Position = UDim2.new(0, 0, -1, 57)
+    end)
+    _TextButton8.MouseButton1Click:Connect(function()
+        _TextButton.Visible = true
+        _TextButton2.Visible = true
+        _TextButton3.Visible = true
+        _TextButton4.Visible = true
+        _TextLabel2.Visible = true
+        _TextButton5.Visible = true
+        _TextButton7.Visible = true
+        _TextButton8.Visible = false
+        _ScreenGui.Frame.BackgroundTransparency = 0
+        _TextButton6.Position = UDim2.new(0, 0, -1, 27)
+    end)
+end)
+_ChcNng:addButton('hitbox Hi\u{1ec7}n', function()
+    _G.HeadSize = 60
+    _G.Disabled = true
+
+    game:GetService('RunService').RenderStepped:connect(function()
+        if _G.Disabled then
+            local v206 = next
+            local v207, v208 = game:GetService('Players'):GetPlayers()
+
+            while true do
+                local u209
+
+                v208, u209 = v206(v207, v208)
+
+                if v208 == nil then
+                    break
+                end
+                if u209.Name ~= game:GetService('Players').LocalPlayer.Name then
+                    pcall(function()
+                        u209.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize, _G.HeadSize, _G.HeadSize)
+                        u209.Character.HumanoidRootPart.Transparency = 0.7
+                        u209.Character.HumanoidRootPart.BrickColor = BrickColor.new('Really blue')
+                        u209.Character.HumanoidRootPart.Material = 'Neon'
+                        u209.Character.HumanoidRootPart.CanCollide = false
+                    end)
+                end
+            end
+        end
+    end)
+end)
+_ChcNng:addButton('hitbox Kh\u{f4}ng', function()
+    local u210 = false
+
+    game:GetService('UserInputService').JumpRequest:connect(function()
+        if u210 then
+            game:GetService('Players').LocalPlayer.Character:FindFirstChildOfClass('Humanoid'):ChangeState('Jumping')
+        end
+    end)
+
+    local _VirtualUser = game:GetService('VirtualUser')
+
+    game:GetService('Players').LocalPlayer.Idled:connect(function()
+        _VirtualUser:Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+        wait(1)
+        _VirtualUser:Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+    end)
+    game.StarterGui:SetCore('SendNotification', {
+        Title = 'V\u{103}n Th\u{e0}nh IOS',
+        Text = '\u{fffd}\u{e3} B\u{1ead}t hitbox',
+        Duration = 1,
+    })
+    wait(1)
+    game.StarterGui:SetCore('SendNotification', {
+        Title = 'V\u{103}n Th\u{e0}nh IOS',
+        Text = 'YTB: @thanhdzso1',
+        Duration = 1,
+    })
+
+    _G.HeadSize = 60
+    _G.Disabled = true
+
+    game:GetService('RunService').RenderStepped:connect(function()
+        if _G.Disabled then
+            local v212 = next
+            local v213, v214 = game:GetService('Players'):GetPlayers()
+
+            while true do
+                local u215
+
+                v214, u215 = v212(v213, v214)
+
+                if v214 == nil then
+                    break
+                end
+                if u215.Name ~= game:GetService('Players').LocalPlayer.Name then
+                    pcall(function()
+                        u215.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize, _G.HeadSize, _G.HeadSize)
+                        u215.Character.HumanoidRootPart.Transparency = 1
+                        u215.Character.HumanoidRootPart.BrickColor = BrickColor.new('Really black')
+                        u215.Character.HumanoidRootPart.Material = 'Neon'
+                        u215.Character.HumanoidRootPart.CanCollide = false
+                    end)
+                end
+            end
+        end
+    end)
+end)
+_ChcNng:addButton('Aim Camera H\u{1ed7} Tr\u{1ee3}', function()
+    loadstring(Game:HttpGet('https://raw.githubusercontent.com/VanThanhIOS/AlexAimBot/refs/heads/main/AimBotBanTumLum.lua.txt'))()
+end)
+
+local _ThngTinAdmin = v1.Tab_1:addSection():addMenu('Th\u{f4}ng Tin Admin')
+
+_ThngTinAdmin:addChangelog('Xin Ch\u{e0}o T\u{1ea5}t C\u{1ea3} C\u{e1}c B\u{1ea1}n \u{2764}\u{fe0f}')
+_ThngTinAdmin:addChangelog('Hello Everyone \u{2764}\u{fe0f}')
+_ThngTinAdmin:addChangelog('Menu : V\u{103}n Th\u{e0}nh IOS')
+_ThngTinAdmin:addChangelog('Th\u{f4}ng Tin Li\u{ea}n H\u{1ec7}')
+_ThngTinAdmin:addChangelog('YTB: @thanhdzso1')
+_ThngTinAdmin:addChangelog('Tik Tok: @vanthanhisme_')
+_ThngTinAdmin:addChangelog('FB : @vanthanhisme')
+_ThngTinAdmin:addChangelog('Goodbye Everyone')

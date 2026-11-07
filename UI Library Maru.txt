@@ -1,0 +1,23 @@
+local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/discoart/FluentPlus/refs/heads/main/release.lua"))()
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+-- local window fluent
+local Window = Fluent:CreateWindow({
+    Title = "NovaZ hub (Beta 1.0)",
+    SubTitle = " by â AnhKhoa2279 î",
+    TitleIcon = "rbxassetid://100803518819461", 
+    Image = "rbxassetid://100803518819461", 
+    DropdownsOutsideWindow = true,
+    Size = UDim2.fromOffset(500, 350),
+    TabWidth = 180,
+    Acrylic = true,
+    Theme = "Dark",
+    Search = true,
+    MinimizeKey = Enum.KeyCode.LeftControl, 
+
+    UserInfo = false,
+    UserInfoTop = true,
+    UserInfoTitle = game:GetService("Players").LocalPlayer.DisplayName,
+    UserInfoSubtitle = "User",
+    UserInfoSubtitleColor = Color3.fromRGB(255, 255, 255)
+})
